@@ -305,9 +305,8 @@ Check the existance of variables ---- isset() construct
   echo $amount; <---- PHP development environment will display 	              "Warning" or "Notice" when variable is not 		      created. In production environment, "warning" or 		      "notice" are turn-off (see PHP.ini error 			reporting section)	
 
 ?>
-
-
 Example:
+================
 
 <?php
 $amount = 100;
@@ -320,7 +319,7 @@ if(isset($amount)){
 if(!isset($amount))
     echo 'Please create $amount variable';
 ?>
-
+-----------------------------------
 
 Example:  Always use "isset" construct before you perform any data-	 centric operation.
 <?php
@@ -388,13 +387,11 @@ Determine whether a variable contains value or not -- empty() construct
 ?>
 
 <pre>
-
   $a = 0;
   $b = 0.0;  
   $c = "";
   $d = null;
   $e = false;
-
 </pre>
 
 

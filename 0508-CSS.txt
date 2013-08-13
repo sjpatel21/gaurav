@@ -1,0 +1,385 @@
+Cascade Stylesheet 
+====================================================================
+
+ 
+ CSS attributes are instructions from the web-browser to set style attributes when a DOM is created or replace style attributes of existing DOM.
+
+ What is DOM? -- It is an object of tag or text. The web-browser create   an object of tag & text while parsing the "web-document". The   Document Model Object is then used by JavaScript programming language   through which a developer can create/remove/update DOMs.
+
+ 
+
+CSS attributes can be assigned or glued with one of the three ways :
+
+   1. inline style attribute
+
+       <p style="font-family: Arial;  font-size: 1.3em">
+           Hello World
+       </p>
+
+   2. embed style -- adding diferent types of "selectors"
+
+        <style type="text/css">
+           p{
+             font-family: Arial;
+             font-size  : 1.3em;
+            }
+        </style>
+
+         <p>Hello World</p>
+
+    3. Using CSS resource : CSS resource can be a static or dynamic.
+       Static CSS resource will be .css where as dynamic resource will        be PHP or any other program.  
+
+       To "glue" the CSS resource to the Document.
+
+          <link rel="stylesheet"
+                href="css/style.css"/> <--- static resource
+          <link rel="stylesheet"
+                href="file.php"/> <--- dynamic resource
+
+         [Note: Mime or Content-type is optional with <link/>
+                e.g
+                <link rel="stylesheet" type="text/css" ... />]
+
+CSS Attributes and selectors
+=====================================================================
+There are four major "selectors" can be uesd to define the CSS resource.
+
+ 1. tag selector
+
+     HTML element name specific style attributes are "set" via tag      selector.
+
+     Syntax:
+            
+     htmlElementName
+      {
+         attribute1: value1;
+         ....
+      }
+   e.g
+
+    /* To reset the margin of body, html, div and h1 */
+
+     h1, html, body, div {
+         margin:0px;
+     }
+
+    /* To set font-size  for body */
+
+     body{
+       font-size:0.9em;
+     }
+    /* To set font-size for h1 */
+
+     h1{
+       font-size: 3.3em;
+      }
+     
+    input{
+       background:blue;
+    }
+
+    input[type="text"]{
+       color:white;
+    }
+    input[type="submit"]{
+       background:red;
+       color:white;
+     }
+
+ 2. class selector
+
+    Class selector is glued via "class"  attribute of html element.
+
+    Syntax:
+
+     .my-box
+     {
+       border:1px solid red;
+       width:100px;
+       height:100px;
+      }
+
+   User-defined name followed by period is called "class selector".
+
+   <p class="my-box"></p>
+   <input type="text" class="my-box"/>
+
+   You can set two or more "class" selector for one or more elements.
+
+   e.g
+     
+     .red { color: red;}
+     .h300 { height:300px;}
+     .w400 { width:400px;}
+     .box  { border:1px solid black;}
+     .shadow { box-shadow:3px 3px 3px #aaa;}
+
+     <p class="red box shadow">
+         Text is red with box and shadow</p>
+     <h1 class="box shadow h300 w400">Hello</h1>     
+ 
+
+3. "id" selector
+
+   Identity selector is glued via "id" attribute of html element.
+
+   Syntax:
+    #user-defined-name{
+      ...
+    }
+
+    User-defined-name followed by "#" sign.
+
+    #main{
+      width:900px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    <div id="main"></div>
+
+    Note that the 'id' selector cannot be used with repeated html     elements. The elements which are appears once can be glued with    "id selector".
+
+     [Note: The "id" attribute will be used to select a DOM from
+            DOM-Tree and to glue the CSS attributes].
+
+4. Positioned selectors
+
+   To glue CSS selectors based upon the element's position - where it is placed? inside the <div> or <h1>, table or specified selector etc.
+   
+
+ e.g
+
+ <div>
+    <p>Hello</p>
+ </div>
+ <p>
+    Hi
+ </p>
+
+ CSS for <p> which are  children of <div>
+  
+    div > p
+    {
+      color:red;
+     }
+
+ Or
+
+ <div class="one">
+     <p>Hello</p>
+ </div>
+ <div class="two">
+     <p>Hello</p>
+ </div>
+
+ .one > p { color:blue;}
+ .two > p { color:green;}
+
+Single level CSS inheritance
+
+  selector1 selector2{
+     ....
+  }
+ div p{
+    ..
+ }
+
+ .one p{
+     ...
+  }
+ .two p{
+    ..
+ }
+ 
+
+Merge (or multiple inheritance) or inclusive CSS 
+
+ selector1 + selector2
+  {
+     ...
+  }
+
+ ".one"  + ".two"{
+     ..
+  }
+
+
+Selector specific selector
+-------------------------------
+
+p.line
+{
+   border-bottom:1px solid red;
+}
+
+
+<p class="line">H</p>
+<div class="line">A</div>
+
+=====================================================================
+
+CSS Attributes
+----------------
+
+1. margin : To set margin at all four or specific edge.
+
+    margin: nUnit;
+
+    margin: top right bottom left;
+
+    margin-left: nUnit;
+    margin-right: nUnit;
+    margin-bottom: nUnit;
+    margin-top: nUnit;
+
+   You can use "computed" value by using "auto".
+
+      e.g
+           margin-left: auto;
+
+2. padding : To insert space around four edges or specific edge.
+
+      padding:nUnit; /* for all four edges */
+      padding: top right bott left;
+      or use padding-left, padding-right, padding-bottom and padding-         top
+3. border : To draw line around four or specific edge.
+
+      border:width style color;
+      border:1px solid #f00;
+                 double, dashed, dotted, inset, outset, ridge are 
+		 border style constants.
+
+     Use border-left: width style color; to draw line for specific 
+               -right                                     edge.
+               -bottom
+               -top
+4. font-family: family1, family2, family3;
+
+5. font-size: nUnit;  
+
+        Measurement units  will be :
+            
+           px  -- pixel 
+           pt 
+           cm - centi meter
+           in - inch
+           %  - percentage -- relative size
+           em - emphsis    -- relative size
+
+         px, pt, cm, in are fixed size units and should be avoided with          font-size.
+
+6. width: nUnit;
+7. height: nunit;
+8. min-width: nUnit;
+9. min-height: nUnit;
+
+10. position: static | fixed | absolute | none
+              To set layout position , we need to set "left", and "top"
+              attributes.
+11. left:nUnit
+12. top: nUnit
+13. right:nUnit
+14. bottom:nUnit;
+
+   [Never use absolute and fixed unless it is necessory].  
+
+.status-bar
+{
+   position: fixed;
+   bottom:0px;
+   width:100%;
+}
+<div class="status-bar">
+  <a href="#">Do It</a>
+</div>
+
+ 15. background : set background color or paint background using image.
+
+
+      color value can be expressed as :
+
+            1. named color constants e.g  red, blue, green etc
+
+            2. using hexadecimal value
+
+                   #000000 
+                     first two char for "red"
+                     next  two          "green"
+                     rest               "blue"
+
+                #ff0000; //red
+
+   You can write color constant using rgb() css function
+
+               background: rgb(255,0,0); rgb() function take int value
+                between 0 to 255 for three colors.
+
+            Short color hex value
+            -----------------------
+            Repeated color value can be expressed :
+
+
+                  #aabbcc;  as #abc;
+                  #f01   means #ff0011
+
+   To paint background using "image" resource then use url() css    function:  
+
+     background: url('folder/file.ext'); will fill the background by                                             tiling image content.
+
+    background: url('images/hello.jpg') no-repeat; 
+
+    background:url('image1.jpg') repeat-x; 
+                                 repeat-y;
+
+   background: url('image.ext') position1 position2;
+                                left/top/right/bottom/center etc
+
+[NOTE: It would be better to copy image files that are used as "background" into the folder where .css file is exists].
+
+
+ Display a "section" of an image by setting position of background and width and height of target element.
+
+.red
+{
+  height:78px;
+  width:105px;  
+  background: url(colors.png) no-repeat 0px 0px;
+}
+.green
+{
+  height:78px;
+  width:105px;
+  background: url(colors.png) no-repeat -100px 0px;
+}
+.blue
+{
+  height:78px;
+  width:105px;
+  background: url(colors.png) no-repeat -200px 0px;
+}
+
+16. opacity: value_between_0_to_1; set transparency level of  an             element.
+
+     opacity:0.5;  
+
+17.  border-radius: leftTop rightTop rightBottom leftButtom;
+                 
+      or
+
+      border-radius: singleValue; <-- for all four angles.
+
+18.   box-shadow: x y depth color;
+19.   text-shadow: x y depth color;
+
+.my-box
+{
+    border:1px solid #aaa;
+    background: #ccc;
+    box-shadow: 3px 3px 3px #aaa;
+}
+<div class="my-box">
+  <h2>Alert</h2>
+</div>
+         

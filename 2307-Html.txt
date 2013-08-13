@@ -1,0 +1,69 @@
+HTML Document and Tags
+---------------------------------------------------------------------
+Every html doc must be created using following content:
+
+<!doctype html>  <------ Ensure that web-browser starts in "standard
+			 mode".
+
+
+<html lang="en">  <----- Always specify the "document language"
+  <head>
+     <title>Title of document</title> <----- Never ignore this element
+     .......
+  </head>
+  <body>
+     .....
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+--------------------
+You can use lowercase letters to add <!doctype> processing instruction. This <!doctype> is an instruction for a web-browser to select appropriate version of "HTML Parser". There are different versions of "HTML-parsers" a web-browser have.
+
+Each HTML parser parse the document and produce DOM-Tree (Document Object Model) or HTML Objects in order to render them with the help of "Graphics Engine (e.g. web-kit engine of google chrome)". Later these DOMs (Html Objects) are used by JavaScript language.
+
+When <!doctype> is included in document then web-browser automatically select the latest stable version of HTML parser to parse the elements.
+
+And if <!doctype> is not included then web-browser is free to choose any version of HTML parser and hence resulting in-compatible DOMs.
+
+In fact, web-browser always start with one or the two modes : 1) standard mode (when <!doctype> is included) and 2) Quirk mode (dirty mode. When <!doctype> is not included).
+
+In quirk mode, output will always surprise you. (Unexpected output).
+
+[NOTE: Browsers in devices (mobile) cannot start when <!doctype> is not included]
+
+
+ <html lang="en">
+-------------------------------
+ Crawler (Search engine) will classify your document on "language"  you've choosen.
+
+<head>
+--------------------------------
+ <head> represents title of document which will displayed on client's           window.
+  
+        It has one or more <meta/> elements for search engine (crawler)
+	including -- author, about page content, character-set, 	keywords, robot, index and so on.
+
+        We can add <script>, <style>, <link> inside the <head> however <script> and <link> should be added at the end of document (before </body> close tag) to ensure the HTML ELEMENTS are not blocked by Script or CSS content.
+
+<!doctype html>
+
+<html lang="en">
+   <head> <title></title></head>
+   <body>
+     .....
+     .....
+     <script src="sample.js"></script>
+     <script src="jquery.js"></script>
+     <link rel="stylesheet" href="sample.css"/>
+   </body>
+</html>
+<!--- You can add script code outside the </html> (as google coding standard ) --->
+<script>
+ //code
+</script>
+
+
+
+  

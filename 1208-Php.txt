@@ -1,0 +1,415 @@
+PHP Framework
+===================================================================
+
+The PHP framework is composed of 
+
+  1. PHP Language
+  2. PHP Core & Extended (PEAR) APIs
+  3. PHP Runtime
+
+
+PHP Language
+-------------------------------------------------------------------
+ The "PHP" is :
+
+   1. Dynamic programming language.
+
+      A 'programming' language has ability to change type of variable
+	 during program execution is known as dynamic programing lang.
+
+   2. is 'functional' programing language.
+
+       A language has ability to represent functions into variable (or
+       store references of methods/functions into variable)
+
+   3. support 'object-oriented' paradigm.
+
+   4. Server side scripting language.
+ 
+   5. Interpreter language.
+
+
+PHP Language Basics
+---------------------------------------------------------
+
+Identifiers 
+-------------
+
+   Name of variables, functions, classes are example of identifiers.    i.e user-defined words are identifiers.     
+
+
+    Variables
+    ---------------------------------
+    PHP variables are case-sensitive and their name begins with $     (dollar) sign.
+
+    function, class, interface names are case-insensitive.
+
+Keywords/Reserved words
+------------------------
+    PHP reserved words are case-insensitive.
+
+
+TYPES or Datatype
+-------------------------
+
+   PHP is dynamic and untyped language. It means there is no explicit    "datatpye" as found in other programing languages (int, float etc).
+
+   The value or literal (constant) will determine the "datatype" of    variable.
+
+
+   Following types are available in PHP but they are "implicit" and    assigned via literals.
+
+    1. integer (  common for int and long)
+    2. float ( common from float and double)
+    3. string ( single and double quoted string)
+    4. boolean ( represent true and false value)
+    5. object  
+    6. array 
+    7. null
+
+PHP code blocks
+-----------------------------------------------------------
+PHP scripting code can be embed into web-document using one of the following code tags (blocks).
+
+  1. <?php
+       // statements
+      ?>
+
+      This is "universal" PHP code block and it is always there with       PHP develop or production environment.
+
+  2. <?
+       //statements
+      ?>
+
+      PHP "short" tag is turn off by PHP.ini  setting. Do not use       "short" code block.
+
+  3. <?=expr?>
+
+     The expression tag is available in 5.x and it is short form of
+       <?php echo expr ?> -- i.e to write 'expr' into resopnse buffer.
+     The 'expression' tag is turn on by default and will remains      available in any environment.
+
+ 4.  <script language="php">
+         //statement
+     </script>
+     To avoid confusion with JavaScript code, do not use <script>       block.
+
+ 5.  <%
+       //statements
+      %>
+
+       ASP style code block. It is trun off by default.
+
+
+NEVER USE ASP, SHORT and <SCRIPT> tags. Always use <?php ?> and <?=expr?> blocks.
+
+PHP code file
+--------------------------------------------------------------------
+PHP code can be placed/saved into any extension of file but PHP interpreter the parse/process the .php files only.
+
+ Other extension PHP program files must be included into .php using "include, require, include_once and require_once" keywords.
+
+ e.g
+ common.txt
+ ------------
+ <?php
+   $no  =  10;
+   $name = "Mr. A";
+   echo $no,$name;
+ ?>
+
+ play.php
+ --------
+  <?php
+    include "common.txt";
+   ?>
+
+ If "common.txt" is requested, nothing will be processed but if you requst play.php, you will get result.
+
+Important keywords / language constructs
+-------------------------------------------------------------------
+ 1. echo
+ 2. print
+ 3. if
+ 4. switch
+ 5. for
+ 6. while
+ 7. do while
+ 8. break
+ 9. return
+ 10. case
+
+Constructs(Keywords) are case-insensitive and they can be expressed in lower/upper/mixed cases.
+
+echo & print construct write "value" into response buffer (output buffer).
+
+The echo can send one or more value by adding comma (,) :
+    $no  = 10;
+    echo "One","two",$no;
+whereas print can send single expression.
+
+    print "one";
+    print "two";
+ 
+Syntax:
+  echo(exp1,exp2,...);
+  echo exp1,exp2,...; 
+  print(expr1);
+  print expr1;
+
+<?php
+  $no  = 10;
+  $name = 'Rajesh Shah';
+
+  echo "No", $no, "Name", $name;
+?>
+
+Strings in PHP
+-----------------------------------------------------------------
+PHP string can be expressed in one of the following ways:
+
+ 1. Single quoted string
+ 2. Double quoted string
+ 3. HEREDOC (double quoted string)
+ 4. NOWDOC (Single quoted string)
+
+Single Quoted Strings		Double quoted Strings
+--------------------------------------------------------------------
+1. Variable cannot be expanded  1. Variables data converted into  
+   when variable names are         'string' and replace the name of
+   enclosed into single quoted      variable .i.e vars are expanded.
+   string.
+ 
+Ex:
+
+<?php
+  $no = 10;
+  $name = "Rajesh";
+  
+  $single_quote = 'Hello $name, your roll is $no';
+  $double_quote = "Hello $name, your roll is $no";
+
+  echo $single_quote; //Hello $name, your roll is $no
+  echo $double_quote; //Hello Rajesh, your roll is 10
+?>
+
+2. It unescape the backslash   2. Backslash characters are treated as
+   characters			  command/instructions.
+
+
+<?php
+ 
+  $path = "c:\new folder\test file";
+  echo $path;
+
+  //to unescape the backslash char in double quotes, add an extra \
+ 
+  $path = "c:\\new folder\\test file";
+  echo $path;
+  //Or use single quoted string
+
+  $path = 'c:\new folder\test file';
+  echo $path;
+?>
+
+
+Ex: Print -- The 'red' sun  or The "red" sun
+
+<?php
+  $str1 = 'The "Red" sun';
+  $str2 = "The 'red' sun";
+
+  str3 = "The \"red\" sun";
+  $str4 = 'The \'red\' sun';
+
+  echo $str1,$str2,$str3,$str4;
+?>
+[ Unescape double or single quotes ]
+
+
+PHP strings are multiline
+-----------------------------------------
+<?php
+ $name = "Mr.A";
+
+ $info = "
+Dear $name,
+
+We've your letter...";
+
+  echo $info;
+?>
+  
+HEREDOC and NOWDOC syntax
+------------------------------------------------------
+$varName = <<<NAME_YOUR_BLOCK
+......
+......
+NAME_YOUR_BLOCK;
+  
+    Above syntax is for "HEREDOC" (double quoted string) howver you can enclosed begin block-name in double quotes to define HEREDOC string
+
+
+$varName = <<<"BLOCK_NAME"
+   ...
+   ...
+BLOCK_NAME;
+
+
+For, NOWDOC syntax enclosed block name in single quotes.
+
+$varName = <<<'THIS_IS_NOWDOC'
+ ...
+ ...
+THIS_IS_NOWDOC;
+
+Very Important : The end block for HERE or NOW must appear at very first column of new line --- otherwise "syntax" error will be shown.  
+
+
+<?php
+   
+  $name = "Rajesh";
+
+  $info = <<<START
+    <h1>Welcome, $name</h1>
+    <table cellspacing="5">
+       <thead><tr><th>Subject</th><th>Marks</th></tr></thead>
+       <tbody>
+         <tr><td>Maths</td><td>66</td></tr>
+         <tr><td>English</td><td>76</td></tr>
+       </tbody>
+    </table>
+START;
+^
+|----- must appear at new line and very first column
+   echo $info;
+
+   echo <<<ABOUTUS
+     <h2>Who are we?</h2>
+ABOUTUS;
+^
+|----- must appear at new line and very first column
+?>
+
+No need to use CAPITAL letter to name the block however BLOCK NAME SHOULD USE CAPITAL LETTERS to avoid ambuigity.
+Check the existance of variables ---- isset() construct
+------------------------------------------------------------------
+
+  bool  isset(var1,var2,var3,......);
+
+  It returns true when all of specified variables are "exists". Returns   false if any one from the given list is not exist.
+
+
+<?php
+
+  echo $amount; <---- PHP development environment will display 	              "Warning" or "Notice" when variable is not 		      created. In production environment, "warning" or 		      "notice" are turn-off (see PHP.ini error 			reporting section)	
+
+?>
+
+
+Example:
+
+<?php
+$amount = 100;
+
+if(isset($amount)){
+  echo $amount;
+}
+ echo "Next....";
+
+if(!isset($amount))
+    echo 'Please create $amount variable';
+?>
+
+
+Example:  Always use "isset" construct before you perform any data-	 centric operation.
+<?php
+  $eno  = 0;
+  $name = "";
+  $edate = "";
+   if(isset($eno,$enm,$edate)){
+      //perform operations
+   }else{
+      //show messages
+   }
+?>
+
+
+Determine whether a variable contains value or not -- empty() construct
+----------------------------------------------------------------------
+
+  bool empty(varName);
+
+       returns true when value of variable can be any from the 			following:
+
+			0  -- is numeric empty
+			"" or ''  -empty string
+			false     -empty
+			null 
+			[]	  - empty array
+
+ if(isset($eno,$ename,$edate)) {
+     if(!empty($eno) && !empty($ename) && !empty($edate)) {
+          //ToDo
+      }else {
+          //Message -- empty variables
+      }
+ }else {
+      // message -- variable(s) not exists
+ }
+
+ PHP falsy value 
+=======================================================
+
+ <?php
+  $a = 0;
+  $b = 0.0;  
+  $c = "";
+  $d = null;
+  $e = false;
+
+  if(empty($a)) echo '<br/>$a is empty';
+  if(empty($b)) echo '<br/>$b is empty';
+  if(empty($c)) echo '<br/>$c is empty';
+  if(empty($d)) echo '<br/>$d is empty';
+  if(empty($e)) echo '<br/>$e is empty';
+
+  echo "<h1>Falsy value</h1>";
+   if($a) 
+      echo '<br/>$a is not empty';
+   else
+      echo '<br/>$a is empty';
+
+  if(!$a)  echo '<br/>$a is empty';
+  if(!$b)  echo '<br/>$b is empty';
+  if(!$c)  echo '<br/>$c is empty';
+  if(!$d)  echo '<br/>$d is empty';
+  if(!$e)  echo '<br/>$e is empty';
+?>
+
+<pre>
+
+  $a = 0;
+  $b = 0.0;  
+  $c = "";
+  $d = null;
+  $e = false;
+
+</pre>
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+
+  
+
+
+ 
+    

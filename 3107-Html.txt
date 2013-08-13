@@ -1,0 +1,120 @@
+6. <code>   -   The <code> element display "text" categories under the
+		programming language.
+		The browser will uses "screen" fonts to display the 		<code> text.
+
+7. <pre>    -  Whitespaces are not preserved in HTML but you want to
+	       display text along with "whitespace" (or pre-formatted)
+		using <pre>.
+
+8. HTML entities -- Special characters including > < & etc confused the
+		HTML parser so HTML entities are introduced to 	        write/display such characters.
+
+                 e.g &amp;  for &
+		     &copy; for copy right
+		     &lt;   <
+
+9. abbr	       -- abbrivation of "title" text.
+Ex:
+
+<p>
+  <abbr title="Hyper text markup language">Html</abbr> 
+   Practice</p>
+
+Pre-formated text
+----------------------- 
+<pre>
+No	Name		Age
+10	Raj		20
+</pre>
+-----------------------------
+<h2>C &amp; its program</h2>
+<pre>
+#include &lt;stdio.h&gt;
+int main()
+{
+   printf("\nHello");
+   return 0;
+}
+</pre>
+<div>&copy; Abc Ltd</div>
+
+<p>The <code>printf()</code> is C language function which takes "n" parameters. for example. <code>printf("\nHello World","Hi");</code>.
+
+10. <address>		- To show the "text" as somewhat different 			  purpose. (most importantly for addresses)
+
+<address>
+  <br/>ABC Ltd
+  <br/>1st Floor
+  <br/>Tel : 9292929292
+</address>
+
+11. <q>                 - To add double quotes.
+
+<q>What you see</q> is ...
+
+12. <blockquote>        - Add blockquote to the speech text.
+
+What Mr. XYZ said <blockquote><q>Some .....<q></blockquote>.
+
+13. <sup>		- superscript text
+14. <sub>		- subscript text
+15. <p>			- para text
+16. <br/>		- line break
+17. <hr/>		- Horizontal rule
+18. <ul>		- Unorderlist
+19. <ol>		- Orderlist
+	<ul>
+           <li>One</li> 
+           <li>Two</li>
+           <li>
+              <ol><li>First</li><li>Second</li></ol>
+           </li>
+         </ul>
+20. <strong>		- strong "emphasis"  
+21. <em>		- regular "emphasis"
+22. <cite>		- citation
+23. <del>		- delete the text
+24. <ins>		- insert the text
+
+
+25. <form>		- To define a form through which user can 			  submit data to the web-server.
+
+     <form method="post or get" 
+           action="server_resource">
+          //all input elements will be placed
+	 // inside the <form>
+
+      </form>
+
+   Following are <form> input elements:
+	
+1. <input type="text"/> -- Single line text field
+2. <input type="password"/> -- Single line password field
+3. <textarea></textarea>  -- multiline text field
+4. <input type="hidden"/>  -- Hidden text field
+5. <input type="file"/>   -- File selector field
+6. <input type="radio"/>  -- radio button field
+7. <input type="checkbox"/> --- checkbox field
+8. <input type="image"/>     --- Image submit button
+9. <input type="submit"/>    --- submit button
+10. <input type="button"/>   --- Non-submit button
+11. <button></button>        --- Button -- submit and non-submit
+ (shahmihir26@yahoo.in)
+12. <select>		     --- drop down list
+13. <select size="n">	     --- listbox 
+
+HTML5 - newly introduced input elements
+ --------------------------------------
+ 1. <input type="email"/> 
+ 2. <input type="date"/>
+ 3. <input type="number"/>
+ 4. <input type="color"/>
+ 5. <input type="tel"/>
+ 6. <input type="time"/>
+ 7. <input type="datetime"/>
+     
+
+
+           
+			 
+

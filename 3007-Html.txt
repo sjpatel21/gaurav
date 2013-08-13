@@ -1,0 +1,106 @@
+1. <div> -- The main use of <div> is to structure the web-document. The 		<div> element is next to the <body> DOM who can persist
+		any element in it including <form>, <table> and <div> 		        it self.
+
+        -- In HTML5, some new elements are introduced which replaces           the <div>s : <header>, <footer>, <section>, <article>, and
+			<nav> to add declartive behavior of document.
+	
+HTML5 page
+---------------
+<!doctype html>
+<html lang="en">
+  <head>
+      <title>Sample HTML5</title>
+  </head>
+  <body>
+      <div>
+          <header> ... </header>
+          <nav> <a href="#">..</a> </nav>
+          <section>
+               <div> ...</div>
+               <article> ..</article>
+          </section>
+          <footer> .. </footer>
+       </div>
+   </body>
+</html>
+
+Note that these new element are only for "description" and their behavior belongs to <div>.
+
+And you can construct same doc using <div>s.
+
+.....
+<body>
+   <div> <----------------------------- This is main/root div
+       <!---- Header ---->
+        <div></div>
+       <!----- Navigation ---->
+       <div></div>
+       <!---- section ----->
+       <div></div>
+       <!------footer --->
+       <div></div>
+   </div>
+</body>
+
+IMPORTANT : Always wrap "content" elements (all elements inside the body) inside the <div> (see above example).
+
+
+To add declarativeness to <div>s, we need to assign "selectors".
+
+e.g
+
+ <div id="main">
+     <div id="header"></div>
+     <div id="nav"></div>
+     <div class="section"></div>
+     <div class="section"></div>
+     .....
+
+2. table tag
+
+   Never use "table" tag to structure the "document". In fact we should have to avoid the excessive use of "table" because of its "complex" DOM representation. A <table> is formed with number of elements including <thead>, <tbody>, <tfoot>, <tr>, <th>, and <td>s.
+
+
+  <table>
+     <thead>
+        <tr><th>..</th></tr>
+     </thead>
+     <tbody>
+        <tr><td>..</td></tr>
+     </tbody>
+     <tfoot>
+        <tr><td>..</td></tr>
+     </tfoot>  
+  </table>   
+
+3. fieldset tag
+
+   You can use this tag to structure the document along with <div>.
+
+  <fieldset>
+      <legend>Search</legend>
+      <div> .. </div>
+  </fieldset>
+
+4. label tag
+
+   It will be used to describe the input.
+
+   <p>
+     <label for="no">Enter No</label>    
+     <input type="text" id="no" name="no"/>
+   </p>
+ Or lazy way : <p>Enter No : <input type="text" ../>
+
+
+5. span tag
+
+   It will be used to seperate the "text" behavior (style).
+  
+   <h1><span class="big-40">T</span>he 
+       <span class="red">red</span>
+       <span class="yellow">sun.</span>
+   </h1>
+
+
+

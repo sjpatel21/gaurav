@@ -1,0 +1,102 @@
+Html - Hyper Text Markup Language
+----------------------------------------------------------------------
+
+ HTML is a standard or specification and it is derived from SGML - Standard Generialized Markup Language. Extensible Markup Language (XML) standard is also derived from SGML.
+
+ HTML is used to present the data (for presentation purpose)
+
+ XML is used to describe the data (for data communication protocol)
+
+ HTML markup language has tags/elements which are implemented by different browser vendors (Chrome, Mozilla, IE etc). The W3C - World Wide Web Consortium develop the standard (specification) and its implementation is performed by browser vendors.
+
+[Note: Visit w3.org for more details]
+
+<!DOCTYPE html>  --- processing instruction
+------------------------------------------------------------------
+
+ When we load "HTML" document, the web-browser will starts with one or the two modes : Quirk or Standard Mode.
+
+  If <!DOCTYPE> is not specified then your browser will be started using "Quirk Or Dirty" mode and in this mode view of web-document might 
+surprise you with different behaviors.
+
+  If <!DOCTYPE> is set then browser will launched with "Standard" mode which validate the HTML markup and ensure the only correct tags can be parsed/processed.
+
+HTML elements and basic guideline to write them
+--------------------------------------------------------------
+
+ 1. HTML elements are not case-sensitive so you can write them in     capital or small letters. However, we'll write elements in lower-    case.
+
+ 2. Attribute value can be surrounded using single or double quotes but     it is not mandatory.
+
+      <input type=text />  <---valid
+      <input type="text" /> <-- valid
+      <input type='text' /> <-- valid
+     
+     It is mandatory when value of attribute is space or comma      delimited.
+
+      <input type=submit value=Press this button /> <-- not valid
+       <input type=submit value="Press this button" />
+
+      Always use double/single quotes to set attribute value.
+
+ 3.   Opened tags can be written as follows:
+
+             <input type="text"> <--- valid
+                              
+             <input type="text" /> <-- valid (xhtml standard)
+
+             <br> or <br/> Line break
+             <hr> or <hr/> Horizontal rule
+ 
+ 4.  Tags must be nested. Do not interset the elements. 
+
+       <div>
+          <p>
+             First Para
+          </p>
+       </div>
+
+           but following is invalid :
+
+               <div>
+                  <p>
+                    First Para
+                </div>
+                </p>
+  5. Whitespaces are ignored. Two or more whitespace are converted to      single space.
+     <div>This          is       	sample		text</div>
+      will output :
+
+               This is sample text
+
+  6. To avoid confusion to parse some "special" characters -- HTML      entities are introduced.
+
+      For example,
+
+         To print less then  ( < ) in html document :
+
+                &lt; <--- html entity
+
+                 is used.
+
+          &lt;test&gt;This is test text&lt;/test&gt;
+          output : <test>This is test text</test>
+
+  7. Always use CSS "selectors" to format the HTML elements. (Always      use Cascade StyleSheet)
+
+  What is an application of web-browser?
+  --------------------------------------
+
+  The web-browser reads html document, parse the content & elements. Remove invalid elements and create HTML objects (or Document Object Model) of all valid elements and render them via "graphics engine".
+ [Note: google chrome uses "web-kit" graphics engine and diferent browser uses different graphics engine.]
+
+
+
+
+
+
+     
+
+
+
+

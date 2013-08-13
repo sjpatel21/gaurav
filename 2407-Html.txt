@@ -1,0 +1,116 @@
+<meta/> 
+-------------------------------------------------------------
+ You can add following entries into <head>
+
+  <meta charset="utf-8"/> <----- If you wish to create multi-lingual 				 page.
+
+   UTF - Universal Text Format is character encoding scheme to    represent charset / alphabets of different languages.
+
+  <meta name="author" content="Mr. ABC"/>
+  <meta name="description" content="3 to 4 lines of page descirption"/>
+  <meta name="keywords" content="Help, Sale, India, (comma seperated                                  value)"/>
+
+
+
+<script>
+-------------------------------------------------------------
+To embed "JavaScript" code into document:
+
+<script> or <script type="text/javascript">
+    //statements
+</script>
+
+[Note: script element also used to create HTML templates and in that case value of "type" attribute may different then "text/javascript"]
+
+To insert JavaScript code from external source
+-------------------------------------------------
+
+<script type="text/javascript"
+        src="js/app.js"></script>
+     
+   In above statement, content from app.js will be inserted into
+   <script></script> if there isn't any content placed inside the start    and end <script>. It will failed to add the .js content if you've added content or whitespace inside <script> and </script>
+
+This is illegal : <script src="js/app.js"> 
+                          var t = 10;
+                   </script>
+
+<link>
+--------------------------------------------------------------
+To "glue" the CSS and other resources.
+
+ <link/> has number of usage but following syntax is to "glue" the CSS   resource:
+
+   <link rel="stylesheet"
+         type="text/css"
+         href="url"/>
+
+
+   <link rel="stylesheet" 
+         href="sample.php"/> <-- dynamic css
+   <link rel="stylesheet"
+          href="css/style.css"/> <--- static css resource
+
+
+HTML elements category
+====================================================================
+
+All HTML elements falls into two categories:
+
+ 1. Inline elements
+ 2. Block  elements
+
+Further "Inline" and "Block" elements forms mixed categories including -- Inline-block, table, inline-table and so on.
+
+
+Inline elements -- Elements height & width will be determined by their content and we cannot set height/width explicitly.
+
+		--- <label>, <span>, <b>, <u> etc are example of inline
+
+Block elements --- They share width from parent element. i.e width of block element will be the width of it "parent". Height of block element  is depends upon the content it holds.
+
+		   We can change "height/width" via CSS attributes.
+
+
+		---- html, body, div, p, header, footer, section, 		     article are example of block elements.
+                     (form tag is also block)
+
+ <input/> elements are "inline-block" --- we can change height/width manually but till they uses browser's default value.
+
+
+
+Developer Tool
+====================================================================
+It helps the developer to examine DOM structure, elements attributes, style attributes, reference documents, glue documents, requests headers, responses headers, JavaScript console and many more.
+
+Ex:
+  
+<!doctype html>
+
+<script>
+  var no = 10;
+  var name;
+
+  console.log(no,name); //this will be displayed at console of
+			//developer tool (not at on document)
+</script>
+<div>
+    <span>This is <code>JavaScript</code> and <code>HTML</code></span>
+    <div></div>
+</div>
+<script> console.log("End of doc."); </script>
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+

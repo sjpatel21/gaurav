@@ -1,0 +1,139 @@
+PHP Application Framework
+--------------------------------------------------------------------
+
+What is "Framework"?
+
+   The "framework" is programming and execution environment to develop,
+   deploy and execute your applications. In fact, a framework is like a
+   "fill in the blanks" feature when your code is filled into     framework's placeholder and framework will do everything to process
+    this "void or blanks".
+
+The PHP framework includes :
+
+    1. PHP language (Hypertext preprocesor)
+    2. PHP Core APIs (Application Programming Interface --        keywords, functions & class libraries)
+    3. PHP Runtime (or Execution Environment)
+
+   PHP framework is developed using C++ (or Visual C++ for windows    version) and you can attach your C++ code/module to the existing framework.
+
+   
+   In order to develop webapp using PHP framework, we must have to    install web-server (Apache, IIS, Netscape etc).
+
+   What is web-server? (Http Server)
+   -------------------
+
+   The main job of web-server is to listen the clients (web-browsers)    for resources and if requested resource is not available then it    send a copy or error message to the web-browser.
+
+   If requested resource is available then it forward this request to   "PHP Framework or Application server".
+
+   The Application server will process the request, produce output   (called response) and forward this output to web-server and web-   server will pass this "response" to the web-browser.
+
+   NOTE: The web-server cannot participate in any application          processing activities. It just receive "input" from clients,
+         handover input to the app-server, and return the result to
+         web-browser which is produced by app-server.
+
+
+   The web-server offers number of services apart from the receiving    and sending "data".
+
+          Following are services of web-server
+
+                1. It provide second-level security in terms of 
+		   "logging". The first-level security is maintained by
+		    the OS itself.
+                2. It allow us to restrict the resources (files) from
+		   the public users.
+                3. It allow us to re-write the "urls".
+
+ 
+What software required to host the PHP web applications?
+----------------------------------------------------------
+
+1. PHP Framework (Latest version 5.5.x.x)
+
+2. Apache 2.x (Or any web-server including Microsoft's Internet 		Information Service)
+
+3. Database Products -- Mysql from oracle
+			Oracle10g/11g/12c from orcle
+			MsSql from microsoft
+			Db2 from IBM, Ms-access, csv, excel etc.
+
+4. Mail Server 
+5. Ftp server (for file transfer service)
+6. Identity servers (for lookup of people, emails, objects etc -- also     called Naming and Directory Service).
+
+
+Each "software" must be installed & configured seperately if we haven't tools like WAMP or XAMPP --- these are pre-configured software and no need to change the configurations for the first use. (However configuration of "software" are normal practice in our day to day development).
+
+W - for window
+A - Apache
+M - MySql community edition server 5.xxx
+P - PHP framework
+
+and XAMPP is for "x" - any OS
+                  A  - Apache
+                  M - MySql
+                  P - PHP
+                  P - Perl 
+
+ Services applications like --- Apache, MySql (or any database server), Mail Server, Ftp server uses "port" number to listen the client requests and serve them.
+
+30-07-2013
+===========    
+WAMP or XAMPP tools installation folder contains necessary softwares including -- PHP framework, Apache web-server, MySql Database server.
+
+We'll discuss the configuration settings for PHP, Apache and MySql server in later sessions.
+
+At present, we will learn how to "deploy" PHP webapp and how to manage application resources.
+
+With WAMP, you will find \wamp\www folder and \xampp\htdocs in XAMPP -- this folder allow us to "host" (or deploy) the php-webapps. However it is also possible that we can create a folder outside "www" or "htdocs" and configure it as a web-app.
+
+PHP application folder structure
+=====================================================================
+
+Always uses "lowercase" name for files and folders. PHP or Apache has no objection over casing of names but if your application is "hosted" on linux/unix server then there might be problems while accessing resources. (Files/folders names are case-sensitive on Linux server os).
+
+
+To organize the web-resources (html, css, JavaScript, images, videos, audios etc), we must have to create some folders.
+
+
+for example,
+
+/webapp/
+       |
+       |----/css/  (css folder or you can rename it as "styles")
+       |
+       |----/js/ ( or you can use "scripts")
+       |
+       |----/images/
+       |
+       |----/model/ (your data and database programs will be falls 			under model category)
+       |
+       |---/templates/ (or "tmpl" or any name you like to store page
+			templates)
+       |
+       |---/sql/    (store your sql queries here but this folder must
+       |	      be private and we'll configure it with .htaccess
+		      settings file
+       |
+       | other public pages and .htaccess
+
+[NOTE: Apache-webserver offers a special file named called "index.xxxx" which will be requested automatically when request from client doesnot include a name of "resource". The "index.xxxx" file is called "welcome-page" or "home" page or "default" page.
+
+ We can also consigure our own "home" page by changing settings in private httpd.conf file.]
+
+httpd.conf is "apache" web-server settings/configuration file. In linux/unix environment, service programs have 'd' suffix -- d stands for daemon.
+
+
+
+
+
+             
+
+
+
+
+
+
+
+
+   

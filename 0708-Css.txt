@@ -1,0 +1,136 @@
+display attribute
+--------------------------------------------------------------
+  To change "layout". .i.e inline to block and vice-versa
+                           block to inline or inline-block.
+
+ display: none | inline | block | inline-block | table;
+
+h1{
+  display: inline-block; /* inline */
+  border:1px solid red;
+  width:100px;
+  height:100px;
+}
+
+<h1>First</h1>
+<h1>Second</h1>
+
+
+float attribute
+-------------------------------------------------------------
+To float elements either "left" or "right" edges of its parent.
+
+  float: none | left | right;
+
+The "float" attribute is inherited by elements which are added after it so if yuo want to remove the float effect then use "clear" attribute.
+
+
+   clear: left| right | both;
+Ex:
+
+ style.css
+ -----------
+#header{
+    height:160px;
+    border:1px solid #a00;
+}
+
+#header * /* all selector */
+{
+  border:1px solid #aaa;
+}
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.clear {
+  clear:both;
+}
+
+Code in html file:
+--------------------------
+<link rel="stylesheet"
+         href="css/style.css"/>
+
+<div id="header">
+   <div class="float-left">A</div>
+   <div class="float-left">B</div>
+   <div class="float-right">C</div>
+   <div class="clear"></div>
+</div>
+
+
+
+Paint background with four different images at four diff location:
+
+css:
+
+#images
+{
+   width:400px;
+   height:400px;
+   border:1px solid #aaa;
+
+   background: url(spiral.png) no-repeat left top,
+               url(spiral.png) no-repeat right top,
+               url(spiral.png) no-repeat left bottom,
+               url(spiral.png) no-repeat right bottom;
+  
+}
+html:
+<div id="images"></div>
+
+pseudo selectors
+==================================================================
+Pseudo selectors are named "selector" and if user want to change the behavior then he/she can override by adding psuedo selector using following syntax:
+
+   selector:pseudo_select{
+   }
+
+1. :active
+2. :visited
+3. :link
+4. :hover
+5. :lang
+6. :after
+7. :before
+8. :first-line 
+9. :first-letter
+10. :nth-child
+
+Ex:
+
+a:active{
+   color:red;
+   font-size:1.5em;
+}
+a:visited{
+    color:orange;
+}
+a:link{
+   color:green;
+}
+
+html:
+
+<a href="#">Your're</a>
+<a href="#">using pseudo css selectors</a>
+
+    
+Css:
+
+a:hover{  /* when mouse pointer enters */
+  text-decoration: none; /* underline | overline |  none */
+  background: black;
+}
+
+::selection
+{
+   background:red;
+}
+
+

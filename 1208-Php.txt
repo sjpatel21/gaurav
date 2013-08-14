@@ -394,19 +394,232 @@ Determine whether a variable contains value or not -- empty() construct
   $e = false;
 </pre>
 
+Operators
+================================================================
+1. Arithmetic operators  +  -  *  / %
 
+   Arithmetic operators with "string" value
+   ------------------------------------------
+    
+        numeric value operand used with "string" value operand will         convert "string" value into "numeric" value.
 
+        String to numeric conversion
+        -----------------------------
+
+        If string operand used with arihmeric operator then it will be
+        transalated into "integer" or "double".
+
+<?php
+ echo "<br/>", 0 + "Hello";      //0
+ echo "<br/>", 4 * "3 apples";   // 12
  
+ $str1 = "10 pencils";
+ $str2 = "5 qty";
 
+ echo "<br/>", gettype($str1), gettype($str2);
 
-
-
+ $amount = $str1 * $str2;    // 50
  
- 
- 
+ echo "<br/>" , $amount, gettype($amount);
+
+?>      
+
+Due to use of arithmetic operators in "string" operands, the PHP string uses period (dot) operator to concatenate strings. (In other languages + sign is used to concat strings).
+
+Best practice to string parse : add 0 or 0.0 to the string operand.
+
+   e.g.   $no = 0 + $strVar1;
+          $no = 0 + $_POST["no"];
+          $no = 0 + $_SESSION["no"]; 
+
+2. Relational operators  
+	==	equlity
+	!=	not equlity
+	===	identical or identity 
+	!==	not identical
+	>
+	<
+	>=	
+	<=
+	
+   Identity or identical operators compare data and datatype of       operands.
+
+   <?php
+      $no1 = '1';
+      $no2 = 1;
+      if($no1 == $no2) {
+           echo "Equal";
+       } else {
+           echo "UnEqual";
+       }
+
+      if($no1 === $no2) {
+           echo "Equal";
+       } else {
+           echo "UnEqual";
+       }
+     ?>
+
+3. Logical operators
+
+     && 	and
+     ||		or
+      ! 	not
+
+4. die(StrMessage)  
+    Halts the page execution and display a message.
+
+5. Unary operator (arithmetic operators)
+
+     +
+     -
+     ++
+     --
+6. conditional or teranary operator
+
+    exp1 ? exp2 : exp3;
+
+7. pair of backticks  `` 
+    to execute external command/program/script
+
 
   
+Ex: die() operator -- can be used for :
+
+		1. Debug the program by adding stop point
+		2. Terminate the page execution on critical cases.
+
+<?php
+  $no  = 0;
 
 
+  /*
+  $copy = $no  or die('Please set value to $no variable');
+  echo "<br/>",$copy;
+
+   Or
+  */
+
+  if(!$no) {
+     die('Please set value to $no variable');
+   }
+
+   $copy = $no;
+   echo "<br/>",$copy;
  
+?>				
+
+Ex: backticks 
+
+<?php
+ $str = `ipconfig`;
+
+ echo $str;
+ 
+?>
+ 
+
+Unary operator : single operand
+-----------------------------
+
+<?php
+
+  $no = 10;
+  $nno = -$no;
+
+  $no++; //++$no;
+?>
+
+
+$no = 1;
+$no = $no+1;    or $no++;  or ++$no;
+
+
+ a = 1;
+
+ b = a++;   or  b = a;
+                a = a + 1;
+
+ b = ++a;   or  a = a + 1;
+                b = a;
+
+
+Escape the HTML 
+===========================================================
+PHP code allow us to write/insert "HTML" code/tags via "echo", "print" constructs and other functions (printf etc).
+
+To escape the HTML in PHP code block, we can open & close the PHP code tags alternatively.
+
+e.g
+
+<?php  $no = 10 ?>  
+<h1>Roll : <?=$no?></h1>
+<?php if($no > 0) {?>
+    <h2>Positive Number</h2>
+<?php 
+    } else if( $no < 0) {?>
+     <h2>Negative Number</h2>
+<?php
+   } else {?>
+      <h2>ZERO</h2>
+<?php
+   }
+?>
+   
+is same as ,
+<?php
+  $no = 10;
+  echo "Roll : $no";
+  if($no > 0 ) {
+       echo "<h2>Positive Number</h2>";
+  } else if($no < 0) {
+       echo "<h2>Negative Number</h2>";
+  } else {
+       echo "<h2>ZERO</h2>";
+  }
+?>
+
+Example : 
+
+<?php
+  $form_type = "login";
+  $username = "abc";
+
+?>
+
+<?php if($form_type == "login") { ?>
+   <form method = "post">
+      <p>Username</p>
+      <p><input type="text" value="<?=$username?>" placeholder = "Enter username"  /></p>
+      <p>Password</p>
+      <p><input type="text"/></p>
+      <p><input type="submit"/></p>
+   </form>
+<?php } ?>  
+
+<?php if($form_type == "register") { ?>
+   <form method = "post">
+      <p>Username</p>
+      <p><input type="text"/></p>
+      <p>Password</p>
+      <p><input type="text"/></p>
+      <p>Confirm Password</p>
+      <p><input type="text"/></p>
+      <p>Security Question</p>
+      <p><input type="text"/></p>
+      <p>Answer</p>
+      <p><input type="text"/></p>
+      <p><input type="submit"/></p>
+   </form>
+<?php } ?> 
+
+<?php if($form_type == "logout") { ?>
+   <form method = "post">
+     <p>Welcome Rajesh </p>
+      
+      <p><input type="submit" value="Logout"/></p>
+   </form>
+<?php } ?> 
+
+  
     

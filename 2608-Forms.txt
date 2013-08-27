@@ -1,0 +1,199 @@
+Input Forms 
+===================================================================
+
+The <form> element
+--------------------
+
+    The <form> element is responsible to send data from client machine
+    to server machine (or server program).
+
+    There are two ways to send "user" input to the server.
+  
+        1. <form> tag
+
+        2. JavaScript's XmlHttpRequest (XHR) (We'll discuss this 					     feature later)
+
+    Basic syntax of <form> tag
+    --------------------------
+ 
+      <form method="post | get"
+            action="server_program_name.php"
+            id="form_id_for_javascript"
+            name="form_name_for_javascript">
+
+           <input ...../>
+      </form>
+ 
+      Any <input/> element placed inside the <form> must have "name"
+      attribute. If "name" attribute is not set then "data" will not
+      be sent.
+
+
+      Method attribute - POST or GET
+      ------------------------------
+      There are two request types -- GET or POST. The default request
+      type of any resource is "GET". When we request a page or resource
+      from addressbar or clicking at link, it is "GET" request method.
+
+      GET request send data into plain-text (human readable form) via
+      addressbar.
+
+          e.g
+
+           http://localhost/sample.php?no=10&name=rajesh
+
+          where ?no=10&name=rajesh is known as "Query String" where           each key(name)-value pair seperated by & sign.
+
+     POST request send data into "encoded" or array of bytes to the      server and on server end they are decoded. You can use HTTPS -- HyperText Transfer Protocol Secured Socket Layer to encrypt/decrypt (CIpher) the data for better data security.
+
+     When to use "GET" request type?
+     ===============================
+
+        1. Never use GET request when submitted data will be written
+		disk file or database or they will be processed for any
+		serious/important tasks.
+        2. GET Request cannot handle huge amount of data. ie. data-		length is limit by the addressbar URL.
+	3. GET request data can be easily tempered or altered.
+        4. GET request cannot be used to upload files or send binary 		data.
+
+      GET should be used when we need data for readonly purpose or we       dont want to pass data at all.
+
+     When to use "POST" request type?
+     ====================================
+
+       1. Data to be stored into database/file or data are used to perform some important tasks like comparing username, password, email, credit card and so on.
+
+       2. To upload a file
+
+       3. To send huge amount of data. No limit on data length.
+
+
+    Action attribute
+    ======================================
+              
+        Send data will be received in a program file which is defined
+	with action attribute. If action attribute is not given then
+	the current web-page will receive the requested data.
+
+   Id and name attribute
+   =========================================
+      
+        Id and name attribute specifically used by JavaScript to
+        select <form> DOM and perform DOM manipulation.
+
+Example: GET Request
+-----------------------------------------------
+
+page_get.php
+----------------
+
+<form method="get" action="get_data.php">
+  <br/>No: <input type="text" name="no"/>
+                                ^
+                                |------- Do not forget to set name
+				|	 attribute
+                                V
+  <br/>Name:<input type="text" name="name"/>
+  <br/><input type="submit" name="cmd" value="Submit"/>
+</form>
+
+
+When we press "Submit" button, the <form> will collect name-value pairs from <input/> elements and sent them to server. On server side program file "get_data.php" will receive these data using $_POST, $_GET or $_REQUEST superglobal arrays.
+
+1. $_POST -- The POST request will populate $_POST array
+2. $_GET  -- The GET request will populate $_GET array
+3. $_REQUEST -- The GET or POST request will populate $_REQUEST array
+
+These array are created by PHP environment and they are available to any PHP program, class, function and that's why they are called "Superglobals".
+
+get_data.php
+===========================
+<?php
+ 
+ $no = 0;
+ $name = "";
+
+ if(isset($_GET["no"], $_GET["name"])){
+    $no = $_GET["no"];
+   $name= $_GET["name"];
+   echo $no, $name;
+ }else{
+   echo "Sorry! no data to proceed.";
+ }
+?>
+
+
+POST request example:
+
+page_post.php
+----------------
+
+<form method="post" action="post_data.php">
+  <br/>No: <input type="text" name="no"/>
+                                ^
+                                |------- Do not forget to set name
+				|	 attribute
+                                V
+  <br/>Name:<input type="text" name="name"/>
+  <br/><input type="submit" name="cmd" value="Submit"/>
+</form>
+
+post_data.php
+-------------------
+<?php
+ 
+ $no = 0;
+ $name = "";
+
+ if(isset($_POST["no"], $_POST["name"])){
+    $no = $_POST["no"];
+   $name= $_POST["name"];
+   echo $no, $name;
+ }else{
+   echo "Sorry! no data to proceed.";
+ }
+?>
+
+
+Example : Same page postback -- no action attribute is set.
+------------------------------------------------------------------
+
+In this example, same program is used to send and receive data.
+
+same_post.php
+--------------------------------
+
+<?php
+
+ /* create variables */ 
+ $no = 0;
+ $name = "";
+ $cmd = "";
+ $message = "";  // To display messages
+
+ /* Examine the which button is pressed */
+ 
+ if(isset($_POST["cmd"])){
+    $cmd = $_POST["cmd"];
+  }
+
+ /* Add button specific code */ 
+ if($cmd == "Add") {
+   $no = 0 + $_POST["no"];
+   $name = $_POST["name"];
+
+   echo "<br/>", $no, $name;
+
+  }
+?>
+<form method="post"> <!-- or set action="same-page.php" -->
+ <br/>No : <input type="text" name="no"/>
+ <br/>Name : <input type="text" name="name"/>
+ <br/><input type="submit" name="cmd" value="Add"/>
+</form>
+
+
+
+
+       
+

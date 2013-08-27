@@ -1,0 +1,107 @@
+Re-write attributes or embed request data
+===================================================================
+When we press "submit" button, all <input/> element's value will be erased or discarded because HTTP protocol. HTTP is stateless protocol. No posted (submitted) data/request is either persist at server machine or client machine. On each request, a web-page and form is loaded with default values.
+
+So to preserve the "state" of <input/> elements, we can use "re-write" technique.
+
+Example:
+
+<?php
+  $no = 0 ;
+  $name = "";
+  $cmd = "";
+
+   if(isset($_POST["cmd"])){
+      $cmd = $_POST["cmd"];
+   }
+   if($cmd == "Submit"){
+         $no = 0 + $_POST["no"];
+         $name = $_POST["name"];
+         //ToDo :: Insert data into database 
+   }
+?>
+
+<form method="post">
+  
+<br/>No:  <input type="text" name="no"  value="<?=$no?>" />
+<br/>Name:  <input type="text" name="name" value="<?=$name?>" />
+<br/> <input type="submit" name="cmd" value="Submit"/>
+
+</form>
+
+
+Preserve the selection of radio buttons
+=========================================================
+ For radio state, use "checked='checked'" or "checked" attribute.
+
+<?php
+ $gender = "";
+ $cmd = "";
+
+ if(isset($_POST["cmd"])){
+   $cmd = $_POST["cmd"];
+ }
+
+ if($cmd == "Submit"){
+   if(isset($_POST["gender"])) {
+     $gender = $_POST["gender"];
+     echo $gender;
+   }
+ }
+
+?>
+
+<form method="post">
+ <p>Gender</p>
+ <br/> <input type="radio"  
+       name="gender" 
+       <?= ($gender == "Male" ? "checked" : "") ?>
+       value="Male"/> Male
+ <br/> <input type="radio"   
+              name="gender" 
+              <?= ($gender == "Female" ? "checked" : "") ?> value="Female"/> Female
+ <br/> <input type="submit" name="cmd" value="Submit"/>
+</form>
+
+
+Preserve the state of "checkboxes"
+=================================================================
+ Checkbox uses "checked" attribute to preserve the "state".
+
+
+ <?php
+  $guj = "";
+  $eng = "";
+  $hin = "";
+  print_r($_POST);
+
+  if(isset($_POST["guj"])){
+    $guj = $_POST["guj"];
+  }
+ if(isset($_POST["hin"])){
+    $hin = $_POST["hin"];
+  }
+ if(isset($_POST["eng"])){
+    $eng = $_POST["eng"];
+  }
+?>
+
+<form method="post">
+  <br/>Language
+  <br/> <input type="checkbox"
+         <?= ($guj == "guj" ? "checked" : "")?>
+         name="guj" value="guj"/> Gujarati
+  <br/> <input type="checkbox" 
+          <?= ($hin == "hin" ? "checked" : "")?>
+           name="hin" value="hin"/> Hindi
+  <br/> <input type="checkbox" 
+         <?= ($eng == "eng" ? "checked" : "")?>
+         name="eng" value="eng"/> English
+  <br/> <input type="submit" name="cmd" value="Submit"/>
+</form>
+
+
+Preseve the state of <textarea>, <select>, <select size="3"> (Listbox)
+and <select multiple="mutiple">
+=====================================================================
+

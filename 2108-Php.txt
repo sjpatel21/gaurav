@@ -1,0 +1,181 @@
+Array in PHP
+-------------------------------------------------------------------
+
+There are two "types" (kind) of "PHP" arrays:
+
+  1. Indexed array : Elements are accessed via zero based integer 		     index.
+
+  2. Associative or Map or Dictionary array : Unique string "key" will      be used to set/get an element into/from arrays.
+
+To create an array
+-------------------
+
+  We've have "array()" construct and subscript operator [] to create    arrays.
+
+   $varName = [];  or $varName = array();
+
+     will creates an empty array.
+
+  You can use same constructs to initialize an array -- Array   initializer syntax.
+  
+          $varName = [value1,value2,...];
+       or $varName = array(value1,value2,value3,....);
+
+To dump array content for debug purpose --- print_r construct will be used.
+---------------------------------------------------------------------
+
+<?php
+
+  $ar = [10,20,40];
+  $ar1 = array("Meh",10,"Pat",20.30);
+  $ar2 = array(10,array("A","B",array("P","Q","R)));
+
+  print_r($ar);
+  print_r($ar1);
+  print_r($ar2);
+?>
+
+ NOTE: To understand the structure of array or examine the arrays we've        to use print_r keyword. 
+       Open "Source View" from web-browser to see the debug data        produced by print_r.
+
+
+Creating Map or Assoc (Associative) array
+------------------------------------------
+   
+   Syntax:
+
+     $varName = ["key1"=>value1, "key2"=>value2,...];
+or   $varName = array("key1"=>value1, "key2"=>value2,...); 
+
+or   $varName = array();
+     $varName["key1"] = value1;
+     ...
+
+Example:
+
+<?php
+ 
+  $emp = array("id"=> 10, "name"=> "Rajesh", "salary"=>4000.34);
+  $std = array();
+  $std["roll"] = 30;
+  $std["name"] = "Mr.A";
+
+  print_r($emp);
+  print_r($std);
+
+  echo "<br/>", $std["roll"], $std["name"];
+?>
+
+Append an element as "indexed" elements
+---------------------------------------------------------
+
+  Syntax:
+    
+    $varName[]=value;
+             ^
+             |--- subscript must be empty
+
+    "value"  will be added at 0 index if an array is empty. It will      insert an element at last_index + 1 otherwise.
+
+<?php
+
+  $cities = array();
+  $cities[] = "Meh"; //0 index
+  $cities[] = "Pat"; //1 index
+  $cities[10] = "Raj"; //10 index;
+  $cities[] = "Jam";   //11 index
+
+  print_r($cities);
+  echo "<br/>", count($cities); // returns size of array
+?>
+
+
+int count(array()) returns size of array (or count of elements). To traverse or iterate array we cannot use simple "for" counter loop due to inconsistency in array index. So do not use while, for and do while loop to traverse arrays.
+
+
+The foreach --- array iterator loop
+-----------------------------------------------------------------
+  
+  Syntax - 1
+
+         foreach($arrayVarName as  $key_or_index=>$value)
+          {
+            //statements
+           }
+
+  Syntax - 2
+
+          foreach($arrayVarName as $value)
+           {
+            // 
+           }
+  The "foreach" scans array element one after one, store index/key and value to $key=>value auto variables and inside the loop read values from $key and $value variables.
+
+<?php
+
+  $nos = [10,20,30];
+
+  foreach($nos as $index=>$value)
+      {
+        echo "<br/>", $index, $value);
+      }
+ 
+  echo "<br/> Without key or index";
+  foreach($nos as $no){
+      echo "<br/>", $no;
+  }
+?>
+
+[NOTE: You can use any variablename to address the $key=>$value pair]
+
+Example: Store roll,name and marks of five subject of three students.
+
+<?php
+
+ $ar = array();
+
+ $ar[] = array(10,"Raj", array(33,44,55,66,77));
+ $ar[] = array(11,"Man", array(83,44,77,66,77));
+ $ar[] = array(12,"Tan", array(93,64,55,66,77));
+
+ print_r($ar);
+
+  foreach($ar as $std)
+  {
+     echo "<br/>Roll : ", $std[0], "Name : ", $std[1];
+     echo " Marks : " , $std[2][0], $std[2][1], $std[2][2],$std[2][3],$std[2][4];
+     
+   }
+
+
+foreach($ar as $std)
+  {
+     echo "<br/>Roll : ", $std[0], "Name : ", $std[1];
+     foreach($std[2] as $mark){
+        echo "\n<br/>\t\t", $mark;
+     } 
+     
+   }
+  
+?>
+
+Embed array expression in double quoted & HEREDOC string 
+----------------------------------------------------------------
+Do not include double quotes while accessing "assoc" array elements in string.
+
+<?php
+
+ $emp = array("no"=>10, "name"=>"Raj");
+
+ $str = "I'm $emp[name] and $emp[no] is my roll";
+ echo $str;
+
+ //or use string concat operator
+
+ $str = "I'm " . $emp["name"] . " and " . $emp["no"] . " is my roll";
+
+ echo $str;
+?>
+
+       
+  

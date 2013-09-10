@@ -1,0 +1,100 @@
+String functions and operators
+=========================================================================
+
+1. Subscript operator to get or set character.
+
+<?php
+   $str = "Hello";
+   echo "<br/>". $str[0];   // H
+   $str[1]='a';             // set/replace char at 1 index
+   echo "<br/>", $str;
+?>
+
+2. strlen($str) - Finds length of string.
+
+<?php
+  $str = "Hello World";
+  $length = strlen($str);
+  echo $length;
+?>
+  
+3. str_repeat(str, num) - To repeat "str" num times.
+
+<?php
+  $str =  str_repeat("0",10);
+  echo $str;
+  echo "<br/>", str_repeat('=', 10); 
+?>
+
+4. str_pad(str,length,padStr,type) - To add padStr either at left, right 
+or both on given str.
+
+<?php
+  $str  = str_pad("Hello",20,"*",1);  //Right padding
+  echo "<br/>", $str;
+  $str  = str_pad("Hello",20,"*",0); //Left padding
+  echo "<br/>", $str;
+  $str  = str_pad("Hello",20,"*",2); //Center (both) padding
+  echo "<br/>", $str;
+?>
+
+5. str_shuffle(str) - It change the position of characters randomly.
+
+<?php
+  $str = "The Red Sun";
+  echo str_shuffle($str);
+?>
+
+6. str_replace(search,replace,subject) - To search a string from "subject" and 
+replace it.
+
+<?php
+  $subject = "The red sun and red rose";
+  $replace = "white";
+  $search="red";
+  $str = str_replace($search, $replace, $subject);
+  echo $str;
+?>
+
+7. str_word_count($str) -- Returns count of words.
+
+<?php
+ $str = "The    red sun			 and red";
+ echo str_word_count($str);
+?>
+
+8. ltrim($str,$removeStr) -- remove leading characters
+9. rtrim($str,$removestr) -- remove trailing chars
+10. trim($str,$removeStr) - remove from both left and right 
+
+<?php
+ $str = "     Hello         ";
+ echo "<br/>1." . ltrim($str) . "1";
+ echo "<br/>2." . rtrim($str) . "2";
+ echo "<br/>3." . trim($str) . "3";
+ 
+ $str = "*******Hello******";
+ echo "<br/>", ltrim($str,"*");
+?>
+
+11. str_getcsv($str,$delim);  It split a string as per given delimeter and
+returns an array of string.
+
+<?php
+  $str = "no|name|age";
+  $arr = str_getcsv($str,"|");
+  foreach ($arr as $a) {
+      echo "<br/>". $a;
+  }
+?>
+
+12. strcmp($str1,$str2) -- Case sensitive string compare.
+13. strcasecmp($str1,$str2) - Case insensitive compare.
+
+<?php
+ $str1 = "Hello";
+ $str2 = "hello";
+ echo strcasecmp($str1, $str2);
+ 
+ echo "<br/>", strcmp($str1, $str2);
+?>
